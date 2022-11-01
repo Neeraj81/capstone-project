@@ -10,6 +10,7 @@ import os
 import re
 
 tokenizer = pickle.load(open('labels.pkl', 'rb'))
+gpt_2_p_model = pickle.load(open('gpt_2_p_model.pkl', 'rb'))
 # get value from enviroment variable
 tenorflow_url = os.environ.get(
     'TENSORFLOW_URL', 'http://localhost:1000/v1/models/predictive_text:predict')
