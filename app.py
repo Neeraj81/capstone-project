@@ -9,7 +9,7 @@ import json
 import os
 import re
 
-
+tokenizer = pickle.load(open('labels.pkl', 'rb'))
 # get value from enviroment variable
 tenorflow_url = os.environ.get(
     'TENSORFLOW_URL', 'http://localhost:1000/v1/models/predictive_text:predict')
