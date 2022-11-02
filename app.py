@@ -9,8 +9,13 @@ import json
 import os
 import re
 
-tokenizer = pickle.load(open('labels.pkl', 'rb'))
-gpt_2_p_model = pickle.load(open('gpt_2_p_model.pkl', 'rb'))
+
+from transformers import TFGPT2LMHeadModel , GPT2Tokenizer
+from tensorflow.python.saved_model.signature_def_utils_impl import predict_signature_def
+
+tokenizer = GPT2Tokenizer.from_pretrained('gpt2-large')
+gpt_2_p_model = TFGPT2LMHeadModel.from_pretrained('gpt2-large' ,pad_token_id = tokenizer.eos_token_id)
+
 # get value from enviroment variable
 tenorflow_url = os.environ.get(
     'TENSORFLOW_URL', 'http://localhost:1000/v1/models/predictive_text:predict')
